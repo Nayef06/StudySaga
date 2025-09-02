@@ -688,20 +688,23 @@ function renderHeader(){
 function renderCampusScene(){
   const wrap = $('#campusScene');
   if (!wrap) return;
-  wrap.innerHTML = '';
+
+  // Always hard reset the scene each render
+  wrap.textContent = '';
+
   BUILDINGS.forEach((b, i)=>{
-    const c = state.buildings[b.id].count;
-    if (!c) return;
-    // show up to sqrt(count) tiles, capped
-    const tiles = Math.min(6, Math.max(1, Math.floor(Math.sqrt(c))));
-    for (let k=0;k<tiles;k++){
-      const el = document.createElement('div');
-      el.className = 'tile';
-      el.style.animationDelay = ( (i*0.2 + k*0.1) % 2 ).toFixed(2)+'s';
-      el.innerHTML = `<div class="ic">${b.icon}</div><div class="badge">x${c}</div>`;
-      wrap.appendChild(el);
-    }
+    const c = state.buildings[b.id]?.count || 0;
+    if (c <= 0) return;
+
+    // One tile per building type, with a count badge.
+    const el = document.createElement('div');
+    el.className = 'tile';
+    el.style.animationDelay = ((i * 0.15) % 2).toFixed(2) + 's';
+    el.innerHTML = `<div class="ic" title="${b.name}">${b.icon}</div>
+                    <div class="badge">x${c}</div>`;
+    wrap.appendChild(el);
   });
+
   if (!wrap.children.length){
     const hint = document.createElement('div');
     hint.className = 'muted small';
@@ -709,6 +712,7 @@ function renderCampusScene(){
     wrap.appendChild(hint);
   }
 }
+
 
 function renderCapProgress(){
   const info = capProgressInfo();
