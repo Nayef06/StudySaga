@@ -6,6 +6,8 @@
 
 ---
 
+https://nayef06.github.io/StudySaga/
+
 ## Overview
 
 **Study Saga** is a lightweight, single-file browser **idle/clicker** game designed to be playable offline. Click the animated **Study Orb** to earn *Knowledge*, buy generators, unlock upgrades, and **Prestige (“Graduate”)** to earn **Caps** for permanent power-ups. Balanced for **hours of progression**, not one sitting.
@@ -116,7 +118,7 @@ A: Yes. Everything is in one file—copy, tweak, and reload.
 
 ## License
 
-MIT License (feel free to change to your preferred license).
+MIT License
 
 ---
 
