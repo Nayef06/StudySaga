@@ -1109,6 +1109,14 @@ setInterval(checkAchievements, 800);
 if (!localStorage.getItem(SAVE_KEY)){
   toast('Welcome! Click the Study Orb to earn Knowledge. Buy a Notebook for passive income.', 'good');
 }
+// ---------- Dev cheat ----------
+window.dev = function(){
+  state.knowledge = 1e100;      // basically infinite Knowledge
+  state.lifetimeKnowledge = 1e100;
+  state.caps = 1e999;             // huge pile of unspent Caps
+  console.log('Dev cheat activated: infinite Knowledge + Caps 💸');
+  renderAll();
+};
 
 })(); // IIFE
 </script>
